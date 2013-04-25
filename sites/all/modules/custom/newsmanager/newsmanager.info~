@@ -1,0 +1,12 @@
+name = Newsmanager
+description = "Provides a fully functionally News Module"
+package = News
+core = 7.x
+files[] = newsmanager.module
+files[] = newsmanager.install
+files[] = newsmanager.admin.inc
+configure = admin/config/newsmanager/settings
+dependencies[] = views
+dependencies[] = date
+dependencies[] = date_popup
+dependencies[] = node_reference
