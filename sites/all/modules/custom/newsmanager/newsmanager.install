@@ -21,7 +21,6 @@ function newsmanager_install() {
 		'description' => $t('Content type to add Newsarticles'),
 		'title_label' => $t('Newsarticle Title'),
 		'status' => TRUE,
-		'comment' => FALSE,
 		'custom' => TRUE,
 	);
 
@@ -36,7 +35,7 @@ function newsmanager_install() {
 
 	variable_set('node_options_' . $name, array('status'));
 	// hide comments for this node
-	variable_set('comment_' - $name, 'COMMENT_NODE_HIDDEN');
+	variable_set('comment_' . $name, '0');
 
 	// Create all the fields we are adding to our content type.
 	foreach(_newsmanager_installed_fields() as $field) {
@@ -102,6 +101,21 @@ function _newsmanager_installed_fields() {
 				'allowed_values' => array(
 					array(
 						'vocabulary' => 'taxonomy_news_category',
+						'parent' => 0,
+					),
+				),
+			),
+		),
+		// taxonomy referenc auto complete field, referencing a vocabulary called 'tags'
+		'field_newsarticle_tags_ref' => array(
+			'field_name' => 'field_newsarticle_tags_ref',
+			'label' => $t('Tags'),
+			'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+			'type' => 'taxonomy_term_reference',
+			'settings' => array(
+				'allowed_values' => array(
+					array(
+						'vocabulary' => 'tags',
 						'parent' => 0,
 					),
 				),
@@ -185,10 +199,9 @@ function _newsmanager_installed_instances() {
 					'label' => 'hidden',
 					'type' => 'image',
 					'settings' => array(
-						'image_style' => 'bfi_common_features_image',
+						'image_style' => 'large',
 						'image_link' => '',
 					),
-					'weight' => -1,
 				),
 				'teaser' => array(
 					'label' => 'hidden',
@@ -197,7 +210,22 @@ function _newsmanager_installed_instances() {
 						'image_style' => 'thumbnail',
 						'image_link' => 'content',
 					),
-					'weight' => -1,
+				),
+				'overview' => array(
+					'label' => 'hidden',
+					'type' => 'image',
+					'settings' => array(
+						'image_style' => 'medium',
+						'image_link' => 'content',
+					),
+				),
+				'archive' => array(
+					'label' => 'hidden',
+					'type' => 'image',
+					'settings' => array(
+						'image_style' => 'medium',
+						'image_link' => 'content',
+					),
 				),
 			),
 		),
@@ -205,6 +233,17 @@ function _newsmanager_installed_instances() {
 		'field_newsarticle_category_ref' => array(
 			'field_name' => 'field_newsarticle_category_ref',
 			'label' => $t('News category'),
+			'description' => $t('Enter a comma-separated list of words to describe your content.'),
+			'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+			'widget' => array(
+				'type' => 'taxonomy_autocomplete',
+			),
+		),
+		// instance of field_newsarticle_tags_ref
+		'field_newsarticle_tags_ref' => array(
+			'field_name' => 'field_newsarticle_tags_ref',
+			'label' => $t('Tags'),
+			'description' => $t('Enter a comma-separated list of words to describe your content.'),
 			'cardinality' => FIELD_CARDINALITY_UNLIMITED,
 			'widget' => array(
 				'type' => 'taxonomy_autocomplete',
