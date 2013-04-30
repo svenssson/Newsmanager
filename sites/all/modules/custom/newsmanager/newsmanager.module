@@ -1,5 +1,4 @@
 <?php
 
-/**
- * @file
- */
+// Load newsmanager.views.inc from the newsmanager module
+module_load_include('inc', 'newsmanager', 'newsmanager.views');
