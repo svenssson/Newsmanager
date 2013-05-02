@@ -27,9 +27,6 @@ function newsmanager_install() {
 	// set default values for anything not explicitly defined in the above array
 	$content_type = node_type_set_defaults($newsarticle);
 
-	// add the body field ot the content type
-	node_add_body_field($content_type, 'Newsarticle content');
-
 	// create the content type
 	node_type_save($content_type);
 
@@ -65,6 +62,12 @@ function _newsmanager_installed_fields() {
 	$t = get_t();
 	
 	$fields = array(
+		// body field
+		'field_newsarticle_body' => array(
+			'field_name' => 'field_newsarticle_body',
+			'type' => 'text_with_summary',
+			'entity_types' => array('node'),
+    ),
 		// date field
 		'field_newsarticle_date' => array(
 			'field_name' => 'field_newsarticle_date',
@@ -134,6 +137,27 @@ function _newsmanager_installed_instances() {
 	$t = get_t();
 	
 	$instances = array(
+		// instance of field body
+		'field_newsarticle_body' => array(
+			'field_name' => 'field_newsarticle_body',
+			'entity_type' => 'node',
+			'label' => 'Newsarticle content',
+			'widget' => array('type' => 'text_textarea_with_summary'),
+			'settings' => array('display_summary' => TRUE),
+			'display' => array(
+				'default' => array(
+					'label' => 'hidden',
+					'type' => 'text_default',
+				),
+				'teaser' => array(
+					'label' => 'hidden',
+					'type' => 'text_summary_or_trimmed',
+					'settings' => array(
+						'trim_length' => 100,
+					),
+				),
+			),
+		),
 		// instance of field_newsarticle_date
 		'field_newsarticle_date' => array(
 			'field_name' => 'field_newsarticle_date',
@@ -205,14 +229,6 @@ function _newsmanager_installed_instances() {
 					'settings' => array(
 						'image_style' => 'large',
 						'image_link' => '',
-					),
-				),
-				'teaser' => array(
-					'label' => 'hidden',
-					'type' => 'image',
-					'settings' => array(
-						'image_style' => 'thumbnail',
-						'image_link' => 'content',
 					),
 				),
 				'overview' => array(
@@ -313,12 +329,6 @@ function newsmanager_uninstall() {
 
 	// Delete vocabulary	
 	taxonomy_vocabulary_delete($vid);
-
-	// Delete views
-	$view_name = 'newsarticle_teaser_view';
-	$views = views_get_all_views();
-	$views[$view_name]->delete();
-	views_object_cache_clear('view', $view_name);
 
 	// Purge all field information
 	field_purge_batch(1000);
