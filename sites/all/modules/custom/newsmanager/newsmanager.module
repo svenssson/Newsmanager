@@ -13,7 +13,7 @@ function newsmanager_menu() {
 		'description' => t('Configure Newsmanager'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array('newsmanager_admin_settings'),
-		'acces arguments' => array('administer newsmanager'),
+		'access arguments' => array('administer newsmanager'),
 		'file' => 'newsmanager.admin.inc',
 	);
 	
