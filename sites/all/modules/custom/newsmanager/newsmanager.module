@@ -2,3 +2,33 @@
 
 // Load newsmanager.views.inc from the newsmanager module
 module_load_include('inc', 'newsmanager', 'newsmanager.views');
+
+/**
+ * Implements hook_menu()
+ */
+function newsmanager_menu() {
+	// Create administration page for Newsmanager-Module
+	$items['admin/config/newsmanager/settings'] = array(
+		'title' => t('Newsmanager'),
+		'description' => t('Configure Newsmanager'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('newsmanager_admin_settings'),
+		'acces arguments' => array('administer newsmanager'),
+		'file' => 'newsmanager.admin.inc',
+	);
+	
+	return $items;
+}
+
+/**
+ * Implements hook_permission()
+ */
+function newsmanager_permission() {
+	// Create permission for administration page of Newsmanager-Module
+	$permissions['administer newsmanager'] = array(
+		'title' => t('Administer Newsmanager'),
+		'description' => t('Users with this permission are allowed to administer the Newsmanager.'),
+	);
+	
+	return $permissions;
+}
