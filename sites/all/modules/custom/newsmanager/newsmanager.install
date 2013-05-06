@@ -331,6 +331,24 @@ function newsmanager_uninstall() {
 	// Delete vocabulary	
 	taxonomy_vocabulary_delete($vid);
 
+	// Get all views
+	$views = views_get_all_views(TRUE);
+
+	// Delete Archive View
+	if(isset($views['newsarticle_archive_view'])) {
+		$views['newsarticle_archive_view']->delete();
+	}
+
+	// Delete Teaser View
+	if(isset($views['newsarticle_teaser_view'])) {
+		$views['newsarticle_teaser_view']->delete();
+	}
+
+	// Delete Overview View
+	if(isset($views['newsarticle_overview_view'])) {
+		$views['newsarticle_overview_view']->delete();
+	}
+
 	// Purge all field information
 	field_purge_batch(1000);
 }
