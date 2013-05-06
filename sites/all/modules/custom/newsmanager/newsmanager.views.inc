@@ -43,6 +43,7 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['pager']['options']['tags']['next'] = 'nächste Seite ›';
 	$handler->display->display_options['pager']['options']['tags']['last'] = 'letzte Seite »';
 	$handler->display->display_options['style_plugin'] = 'grid';
+	$handler->display->display_options['style_options']['columns'] = '2';
 	$handler->display->display_options['row_plugin'] = 'fields';
 	$handler->display->display_options['row_options']['inline'] = array(
 		'title' => 'title',
@@ -137,6 +138,14 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['granularity'] = 'minute';
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['form_type'] = 'date_text';
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['default_date'] = 'now';
+	/* Filter criterion: Inhalt: Sprache */
+	$handler->display->display_options['filters']['language']['id'] = 'language';
+	$handler->display->display_options['filters']['language']['table'] = 'node';
+	$handler->display->display_options['filters']['language']['field'] = 'language';
+	$handler->display->display_options['filters']['language']['value'] = array(
+		'***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+	);
+
 	$translatables['newsarticle_teaser_view'] = array(
 		t('Master'),
 		t('Newsarticle Teaser View'),
@@ -241,6 +250,13 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['granularity'] = 'minute';
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['form_type'] = 'date_text';
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['default_date'] = 'now';
+	/* Filter criterion: Inhalt: Sprache */
+	$handler->display->display_options['filters']['language']['id'] = 'language';
+	$handler->display->display_options['filters']['language']['table'] = 'node';
+	$handler->display->display_options['filters']['language']['field'] = 'language';
+	$handler->display->display_options['filters']['language']['value'] = array(
+		'***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+	);
 
 	/* Display: Page */
 	$handler = $view->new_display('page', 'Page', 'page');
@@ -330,6 +346,13 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['granularity'] = 'minute';
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['form_type'] = 'date_text';
 	$handler->display->display_options['filters']['field_newsarticle_end_date_value']['default_date'] = 'now';
+	/* Filter criterion: Inhalt: Sprache */
+	$handler->display->display_options['filters']['language']['id'] = 'language';
+	$handler->display->display_options['filters']['language']['table'] = 'node';
+	$handler->display->display_options['filters']['language']['field'] = 'language';
+	$handler->display->display_options['filters']['language']['value'] = array(
+		'***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+	);
 
 	/* Display: Page */
 	$handler = $view->new_display('page', 'Page', 'page');
