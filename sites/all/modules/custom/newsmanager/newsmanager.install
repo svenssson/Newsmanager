@@ -31,6 +31,7 @@ function newsmanager_install() {
 	node_type_save($content_type);
 
 	variable_set('node_options_' . $name, array('status'));
+	variable_set('node_submitted_' . $name, 0);
 	// hide comments for this node
 	variable_set('comment_' . $name, '0');
 	// set multilingual options

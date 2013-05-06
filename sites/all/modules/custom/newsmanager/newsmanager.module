@@ -8,9 +8,20 @@ module_load_include('inc', 'newsmanager', 'newsmanager.views');
  */
 function newsmanager_menu() {
 	// Create administration page for Newsmanager-Module
-	$items['admin/config/newsmanager/settings'] = array(
+	// with an entry in the config page.
+	$items['admin/config/newsmanager'] = array(
 		'title' => t('Newsmanager'),
 		'description' => t('Configure Newsmanager'),
+		'position' => 'right',
+    'weight' => -15,
+		'page callback' => 'system_admin_menu_block_page',
+		'access arguments' => array('administer newsmanager'),
+		'file' => 'system.admin.inc',
+		'file path' => drupal_get_path('module', 'system'),
+	);
+	$items['admin/config/newsmanager/settings'] = array(
+		'title' => t('Author and Date settings'),
+		'description' => t('Configure wheter date and author are showed or not.'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array('newsmanager_admin_settings'),
 		'access arguments' => array('administer newsmanager'),
