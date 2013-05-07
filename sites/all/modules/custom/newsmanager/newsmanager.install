@@ -36,7 +36,7 @@ function newsmanager_install() {
 	variable_set('comment_' . $name, '0');
 	// set multilingual options
 	variable_set('language_content_type_' . $name, 1);
-	variable_set('i18n_node_options_' . $name, array(0 => current, 1 => required));
+	variable_set('i18n_node_options_' . $name, array(0 => 'current', 1 => 'required'));
 	variable_set('i18n_node_extended_' . $name, 1);
 
 	// Create all the fields we are adding to our content type.
