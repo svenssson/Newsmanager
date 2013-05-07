@@ -14,6 +14,8 @@ function newsmanager_views_api() {
  * Implements hook_views_default_views().
  */
 function newsmanager_views_default_views() {
+	$t = get_t();
+
 	$views = array();
 
 	// Create Teaser View
@@ -35,13 +37,13 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['cache']['type'] = 'none';
 	$handler->display->display_options['query']['type'] = 'views_query';
 	$handler->display->display_options['exposed_form']['type'] = 'basic';
-	$handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Zurücksetzen';
+	$handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
 	$handler->display->display_options['pager']['type'] = 'full';
 	$handler->display->display_options['pager']['options']['items_per_page'] = '5';
-	$handler->display->display_options['pager']['options']['tags']['first'] = '« erste Seite';
-	$handler->display->display_options['pager']['options']['tags']['previous'] = '‹ vorherige Seite';
-	$handler->display->display_options['pager']['options']['tags']['next'] = 'nächste Seite ›';
-	$handler->display->display_options['pager']['options']['tags']['last'] = 'letzte Seite »';
+	$handler->display->display_options['pager']['options']['tags']['first'] = '« first page';
+	$handler->display->display_options['pager']['options']['tags']['previous'] = '‹ previous page';
+	$handler->display->display_options['pager']['options']['tags']['next'] = 'next page ›';
+	$handler->display->display_options['pager']['options']['tags']['last'] = 'last page »';
 	$handler->display->display_options['style_plugin'] = 'grid';
 	$handler->display->display_options['style_options']['columns'] = '2';
 	$handler->display->display_options['row_plugin'] = 'fields';
@@ -151,17 +153,17 @@ function newsmanager_views_default_views() {
 		t('Newsarticle Teaser View'),
 		t('more'),
 		t('Apply'),
-		t('Zurücksetzen'),
+		t('Reset'),
 		t('Sort by'),
 		t('Asc'),
 		t('Desc'),
 		t('Items per page'),
 		t('- All -'),
 		t('Offset'),
-		t('« erste Seite'),
-		t('‹ vorherige Seite'),
-		t('nächste Seite ›'),
-		t('letzte Seite »'),
+		t('« first page'),
+		t('‹ previous page'),
+		t('next page ›'),
+		t('last page »'),
 		t('Block'),
 	);
 
@@ -186,15 +188,22 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['cache']['type'] = 'none';
 	$handler->display->display_options['query']['type'] = 'views_query';
 	$handler->display->display_options['exposed_form']['type'] = 'basic';
-	$handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Zurücksetzen';
+	$handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
 	$handler->display->display_options['pager']['type'] = 'full';
 	$handler->display->display_options['pager']['options']['items_per_page'] = '10';
-	$handler->display->display_options['pager']['options']['tags']['first'] = '« erste Seite';
-	$handler->display->display_options['pager']['options']['tags']['previous'] = '‹ vorherige Seite';
-	$handler->display->display_options['pager']['options']['tags']['next'] = 'nächste Seite ›';
-	$handler->display->display_options['pager']['options']['tags']['last'] = 'letzte Seite »';
+	$handler->display->display_options['pager']['options']['tags']['first'] = '« first page';
+	$handler->display->display_options['pager']['options']['tags']['previous'] = '‹ previous page';
+	$handler->display->display_options['pager']['options']['tags']['next'] = 'next page ›';
+	$handler->display->display_options['pager']['options']['tags']['last'] = 'last page »';
 	$handler->display->display_options['style_plugin'] = 'default';
 	$handler->display->display_options['row_plugin'] = 'node';
+	/* No results behavior: Global: Unfiltered text */
+	$handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+	$handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+	$handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+	$handler->display->display_options['empty']['area_text_custom']['label'] = 'No articles found!';
+	$handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+	$handler->display->display_options['empty']['area_text_custom']['content'] = 'No articles were found.<br>Try adjusting your filter criteria.';
 	/* Feld: Inhalt: Titel */
 	$handler->display->display_options['fields']['title']['id'] = 'title';
 	$handler->display->display_options['fields']['title']['table'] = 'node';
@@ -257,6 +266,23 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['filters']['language']['value'] = array(
 		'***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
 	);
+	/* Filter criterion: Inhalt: Datum (field_newsarticle_date) */
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['id'] = 'field_newsarticle_date_value';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['table'] = 'field_data_field_newsarticle_date';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['field'] = 'field_newsarticle_date_value';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['operator'] = 'between';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['exposed'] = TRUE;
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['operator_id'] = 'field_newsarticle_date_value_op';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['label'] = 'Datum';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['operator'] = 'field_newsarticle_date_value_op';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['identifier'] = 'field_newsarticle_date_value';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['remember_roles'] = array(
+		2 => '2',
+		1 => 0,
+		3 => 0,
+	);
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['form_type'] = 'date_popup';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['year_range'] = '-10:+0';
 
 	/* Display: Page */
 	$handler = $view->new_display('page', 'Page', 'page');
@@ -266,19 +292,19 @@ function newsmanager_views_default_views() {
 		t('Newsarticle Overview'),
 		t('more'),
 		t('Apply'),
-		t('Zurücksetzen'),
+		t('Reset'),
 		t('Sort by'),
 		t('Asc'),
 		t('Desc'),
 		t('Items per page'),
 		t('- All -'),
 		t('Offset'),
-		t('« erste Seite'),
-		t('‹ vorherige Seite'),
-		t('nächste Seite ›'),
-		t('letzte Seite »'),
-		t('Start Date (field_newsarticle_start_date)'),
-		t('End Date (field_newsarticle_end_date)'),
+		t('« first page'),
+		t('‹ previous page'),
+		t('next page ›'),
+		t('last page »'),
+		t('Start Date'),
+		t('End Date'),
 		t('Page'),
 	);
 
@@ -303,15 +329,22 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['cache']['type'] = 'none';
 	$handler->display->display_options['query']['type'] = 'views_query';
 	$handler->display->display_options['exposed_form']['type'] = 'basic';
-	$handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Zurücksetzen';
+	$handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
 	$handler->display->display_options['pager']['type'] = 'full';
 	$handler->display->display_options['pager']['options']['items_per_page'] = '10';
-	$handler->display->display_options['pager']['options']['tags']['first'] = '« erste Seite';
-	$handler->display->display_options['pager']['options']['tags']['previous'] = '‹ vorherige Seite';
-	$handler->display->display_options['pager']['options']['tags']['next'] = 'nächste Seite ›';
-	$handler->display->display_options['pager']['options']['tags']['last'] = 'letzte Seite »';
+	$handler->display->display_options['pager']['options']['tags']['first'] = '« first page';
+	$handler->display->display_options['pager']['options']['tags']['previous'] = '‹ previous page';
+	$handler->display->display_options['pager']['options']['tags']['next'] = 'next page ›';
+	$handler->display->display_options['pager']['options']['tags']['last'] = 'last page »';
 	$handler->display->display_options['style_plugin'] = 'default';
 	$handler->display->display_options['row_plugin'] = 'node';
+	/* No results behavior: Global: Unfiltered text */
+	$handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+	$handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+	$handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+	$handler->display->display_options['empty']['area_text_custom']['label'] = 'No articles found!';
+	$handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+	$handler->display->display_options['empty']['area_text_custom']['content'] = 'No articles were found.<br>Try adjusting your filter criteria.';
 	/* Feld: Inhalt: Titel */
 	$handler->display->display_options['fields']['title']['id'] = 'title';
 	$handler->display->display_options['fields']['title']['table'] = 'node';
@@ -353,6 +386,23 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['filters']['language']['value'] = array(
 		'***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
 	);
+	/* Filter criterion: Inhalt: Datum (field_newsarticle_date) */
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['id'] = 'field_newsarticle_date_value';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['table'] = 'field_data_field_newsarticle_date';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['field'] = 'field_newsarticle_date_value';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['operator'] = 'between';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['exposed'] = TRUE;
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['operator_id'] = 'field_newsarticle_date_value_op';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['label'] = 'Datum';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['operator'] = 'field_newsarticle_date_value_op';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['identifier'] = 'field_newsarticle_date_value';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['expose']['remember_roles'] = array(
+		2 => '2',
+		1 => 0,
+		3 => 0,
+	);
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['form_type'] = 'date_popup';
+	$handler->display->display_options['filters']['field_newsarticle_date_value']['year_range'] = '-10:+0';
 
 	/* Display: Page */
 	$handler = $view->new_display('page', 'Page', 'page');
@@ -362,17 +412,17 @@ function newsmanager_views_default_views() {
 		t('Newsarticle Archive View'),
 		t('more'),
 		t('Apply'),
-		t('Zurücksetzen'),
+		t('Reset'),
 		t('Sort by'),
 		t('Asc'),
 		t('Desc'),
 		t('Items per page'),
 		t('- All -'),
 		t('Offset'),
-		t('« erste Seite'),
-		t('‹ vorherige Seite'),
-		t('nächste Seite ›'),
-		t('letzte Seite »'),
+		t('« first page'),
+		t('‹ previous page'),
+		t('next page ›'),
+		t('last page »'),
 		t('Page'),
 	);
 
