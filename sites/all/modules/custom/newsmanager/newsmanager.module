@@ -9,8 +9,8 @@ function newsmanager_menu() {
 	// Create administration page for Newsmanager-Module
 	// with an entry in the config page.
 	$items['admin/config/newsmanager'] = array(
-		'title' => t('Newsmanager'),
-		'description' => t('Configure Newsmanager'),
+		'title' => 'Newsmanager',
+		'description' => 'Configure Newsmanager',
 		'position' => 'right',
     'weight' => -15,
 		'page callback' => 'system_admin_menu_block_page',
@@ -19,8 +19,8 @@ function newsmanager_menu() {
 		'file path' => drupal_get_path('module', 'system'),
 	);
 	$items['admin/config/newsmanager/settings'] = array(
-		'title' => t('Author and Date settings'),
-		'description' => t('Configure wheter date and author are showed or not.'),
+		'title' => 'Author and Date settings',
+		'description' => 'Configure whether date and author are shown or not.',
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array('newsmanager_admin_settings'),
 		'access arguments' => array('administer newsmanager'),
