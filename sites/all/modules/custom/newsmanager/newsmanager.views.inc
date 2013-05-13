@@ -45,21 +45,10 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['pager']['options']['tags']['next'] = 'next page ›';
 	$handler->display->display_options['pager']['options']['tags']['last'] = 'last page »';
 	$handler->display->display_options['style_plugin'] = 'grid';
-	$handler->display->display_options['style_options']['columns'] = '2';
+	$handler->display->display_options['style_options']['columns'] = '1';
 	$handler->display->display_options['row_plugin'] = 'fields';
 	$handler->display->display_options['row_options']['inline'] = array(
 		'title' => 'title',
-	);
-	/* Feld: Inhalt: Bild */
-	$handler->display->display_options['fields']['field_newsarticle_image']['id'] = 'field_newsarticle_image';
-	$handler->display->display_options['fields']['field_newsarticle_image']['table'] = 'field_data_field_newsarticle_image';
-	$handler->display->display_options['fields']['field_newsarticle_image']['field'] = 'field_newsarticle_image';
-	$handler->display->display_options['fields']['field_newsarticle_image']['label'] = '';
-	$handler->display->display_options['fields']['field_newsarticle_image']['element_label_colon'] = FALSE;
-	$handler->display->display_options['fields']['field_newsarticle_image']['click_sort_column'] = 'fid';
-	$handler->display->display_options['fields']['field_newsarticle_image']['settings'] = array(
-		'image_style' => 'thumbnail',
-		'image_link' => 'content',
 	);
 	/* Feld: Inhalt: Titel */
 	$handler->display->display_options['fields']['title']['id'] = 'title';
@@ -68,16 +57,6 @@ function newsmanager_views_default_views() {
 	$handler->display->display_options['fields']['title']['label'] = '';
 	$handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
 	$handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-	/* Feld: Inhalt: Body */
-	$handler->display->display_options['fields']['body']['id'] = 'body';
-	$handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-	$handler->display->display_options['fields']['body']['field'] = 'body';
-	$handler->display->display_options['fields']['body']['label'] = '';
-	$handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-	$handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
-	$handler->display->display_options['fields']['body']['settings'] = array(
-		'trim_length' => '50',
-	);
 	/* Sort criterion: Inhalt: Post date */
 	$handler->display->display_options['sorts']['created']['id'] = 'created';
 	$handler->display->display_options['sorts']['created']['table'] = 'node';
