@@ -9,18 +9,18 @@
 #  newsmanager.module: n/a
 #  newsmanager.info: n/a
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2013-05-07 11:07+0200\n"
-"PO-Revision-Date: 2013-05-07 11:07+0200\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-05-13 10:36+0200\n"
+"PO-Revision-Date: 2013-05-13 10:38+0100\n"
+"Last-Translator: Sven Indelicato <sindelicato@redmouse.ch>\n"
 "Language-Team: German <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: newsmanager.admin.inc:21
 msgid "General settings"
@@ -98,11 +98,11 @@ msgstr "Block"
 msgid "Newsarticle Overview"
 msgstr "Newsartikel Übersicht"
 
-#: (duplicate) newsmanager.views.inc:306 newsmanager.install:81 ;179 
+#: (duplicate) newsmanager.views.inc:306 newsmanager.install:81 ;181
 msgid "Start Date"
 msgstr "Start Datum"
 
-#: (duplicate) newsmanager.views.inc:307 newsmanager.install:87 ;193 
+#: (duplicate) newsmanager.views.inc:307 newsmanager.install:87 ;196
 msgid "End Date"
 msgstr "End Datum"
 
@@ -112,7 +112,16 @@ msgstr "Seite"
 
 #: newsmanager.views.inc:412
 msgid "Newsarticle Archive View"
+msgstr "Newsartikel Archiv Ansicht"
+
+#: newsmanager.module:39
+msgid "Administer Newsmanager"
+msgstr "Newsmanager verwalten"
+
+#: newsmanager.module:40
+msgid "Users with this permission are allowed to administer the Newsmanager."
 msgstr ""
+"Benutzer mit dieser Berechtigung, dürfen den Newsmanager konfigurieren."
 
 #: newsmanager.module:12 newsmanager.info:0
 msgid "Newsmanager"
@@ -127,56 +136,49 @@ msgid "Author and Date settings"
 msgstr "Autor- und Datumseinstellungen"
 
 #: newsmanager.module:23
-msgid "Configure wheter date and author are showed or not."
-msgstr ""
+msgid "Configure whether date and author are shown or not."
+msgstr "Konfigurieren, ob Datum und Autor angezeigt werden oder nicht."
 
-#: newsmanager.module:39
-msgid "Administer Newsmanager"
-msgstr ""
-
-#: newsmanager.module:40
-msgid "Users with this permission are allowed to administer the Newsmanager."
-msgstr "Benutzer mit dieser Berechtigung, dürfen den Newsmanager konfigurieren."
-
-#: (duplicate) newsmanager.install:19 
+#: (duplicate) newsmanager.install:19
 msgid "Newsarticle"
 msgstr "Newsartikel"
 
-#: (duplicate) newsmanager.install:21 
+#: (duplicate) newsmanager.install:21
 msgid "Content type to add Newsarticles"
 msgstr "Inhaltstyp, um einen Newsartikel hinzuzufügen."
 
-#: (duplicate) newsmanager.install:22 
+#: (duplicate) newsmanager.install:22
 msgid "Newsarticle Title"
 msgstr "Newsartikel Titel"
 
-#: (duplicate) newsmanager.install:55 ;105 
+#: (duplicate) newsmanager.install:55 ;105
 msgid "News Category"
 msgstr "Newskategorie"
 
-#: (duplicate) newsmanager.install:57 
+#: (duplicate) newsmanager.install:57
 msgid "Categories for Newsarticles."
 msgstr "Newskategorien für Newsartikel."
 
-#: (duplicate) newsmanager.install:75 ;165 
+#: (duplicate) newsmanager.install:75 ;166
 msgid "Date"
 msgstr "Datum"
 
-#: (duplicate) newsmanager.install:94 ;207 
+#: (duplicate) newsmanager.install:94 ;211
 msgid "Image"
 msgstr "Bild"
 
-#: (duplicate) newsmanager.install:120 ;266 
+#: (duplicate) newsmanager.install:120 ;272
 msgid "Tags"
 msgstr "Tags"
 
-#: (duplicate) newsmanager.install:256 
+#: (duplicate) newsmanager.install:261
 msgid "News category"
 msgstr "Newskategorie"
 
-#: (duplicate) newsmanager.install:257 ;267 
+#: (duplicate) newsmanager.install:262 ;273
 msgid "Enter a comma-separated list of words to describe your content."
-msgstr "Durch Kommata getrennte Schlagwörter eingeben, die den Inhalt beschreiben."
+msgstr ""
+"Durch Kommata getrennte Schlagwörter eingeben, die den Inhalt beschreiben."
 
 #: newsmanager.info:0
 msgid "Provides a fully functionally News Module"
@@ -185,4 +187,3 @@ msgstr "Stellt eine voll funktionsfähige Newsumgebung bereit."
 #: newsmanager.info:0
 msgid "News"
 msgstr "News"
-
