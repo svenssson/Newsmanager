@@ -144,6 +144,7 @@ function _newsmanager_installed_instances() {
 			'entity_type' => 'node',
 			'label' => 'Newsarticle content',
 			'widget' => array('type' => 'text_textarea_with_summary'),
+			'required' => 1,
 			'settings' => array('display_summary' => TRUE),
 			'display' => array(
 				'default' => array(
@@ -172,6 +173,7 @@ function _newsmanager_installed_instances() {
 					'year_range' => '-0:+1',
 				),
 			),
+			'required' => 1,
 		),
 		// instance of field_newsarticle_start_date
 		'field_newsarticle_start_date' => array(
@@ -186,6 +188,7 @@ function _newsmanager_installed_instances() {
 					'year_range' => '-0:+1',
 				),
 			),
+			'required' => 1,
 		),
 		// instance of field_newsarticle_end_date
 		'field_newsarticle_end_date' => array(
@@ -200,6 +203,7 @@ function _newsmanager_installed_instances() {
 					'year_range' => '-0:+10',
 				),
 			),
+			'required' => 1,
 		),
 		// instance of field_newsarticle_image
 		'field_newsarticle_image' => array(
@@ -223,6 +227,7 @@ function _newsmanager_installed_instances() {
 					'progress_indicator' => 'throbber',
 				),
 			),
+			'required' => 0,
 			'display' => array(
 				'default' => array(
 					'label' => 'hidden',
@@ -259,6 +264,7 @@ function _newsmanager_installed_instances() {
 			'widget' => array(
 				'type' => 'taxonomy_autocomplete',
 			),
+			'required' => 1,
 		),
 		// instance of field_newsarticle_tags_ref
 		'field_newsarticle_tags_ref' => array(
@@ -269,6 +275,7 @@ function _newsmanager_installed_instances() {
 			'widget' => array(
 				'type' => 'taxonomy_autocomplete',
 			),
+			'required' => 0,
 		),
 	);
 	
