@@ -36,11 +36,15 @@ function newsmanager_admin_settings() {
 		'#default_value' => variable_get('node_submitted_newsarticle'),
 	);
 
+	// Define the function to call on submit
 	$form['#submit'][] = 'newsmanager_admin_settings_submit';
 
 	return system_settings_form($form);
 }
 
+/**
+ * Submit function for configuration page form.
+ */
 function newsmanager_admin_settings_submit($form, &$form_state) {
 	variable_set('node_submitted_newsarticle', $form['newsmanager_general_settings']['newsmanager_show_author']['#value']);
 }
