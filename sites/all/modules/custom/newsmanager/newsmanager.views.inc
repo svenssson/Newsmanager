@@ -262,6 +262,24 @@ function newsmanager_views_default_views() {
 	);
 	$handler->display->display_options['filters']['field_newsarticle_date_value']['form_type'] = 'date_popup';
 	$handler->display->display_options['filters']['field_newsarticle_date_value']['year_range'] = '-10:+0';
+	/* Filter criterion: Inhalt: News category (field_newsarticle_category_ref) */
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['id'] = 'field_newsarticle_category_ref_tid';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['table'] = 'field_data_field_newsarticle_category_ref';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['field'] = 'field_newsarticle_category_ref_tid';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['exposed'] = TRUE;
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['operator_id'] = 'field_newsarticle_category_ref_tid_op';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['label'] = 'News category';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['operator'] = 'field_newsarticle_category_ref_tid_op';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['identifier'] = 'field_newsarticle_category_ref_tid';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['multiple'] = TRUE;
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['remember_roles'] = array(
+		2 => '2',
+		1 => 0,
+		3 => 0,
+	);
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['type'] = 'select';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['vocabulary'] = 'taxonomy_news_category';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['error_message'] = FALSE;
 
 	/* Display: Page */
 	$handler = $view->new_display('page', 'Page', 'page');
@@ -382,6 +400,24 @@ function newsmanager_views_default_views() {
 	);
 	$handler->display->display_options['filters']['field_newsarticle_date_value']['form_type'] = 'date_popup';
 	$handler->display->display_options['filters']['field_newsarticle_date_value']['year_range'] = '-10:+0';
+	/* Filter criterion: Inhalt: News category (field_newsarticle_category_ref) */
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['id'] = 'field_newsarticle_category_ref_tid';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['table'] = 'field_data_field_newsarticle_category_ref';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['field'] = 'field_newsarticle_category_ref_tid';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['exposed'] = TRUE;
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['operator_id'] = 'field_newsarticle_category_ref_tid_op';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['label'] = 'News category';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['operator'] = 'field_newsarticle_category_ref_tid_op';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['identifier'] = 'field_newsarticle_category_ref_tid';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['multiple'] = TRUE;
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['expose']['remember_roles'] = array(
+		2 => '2',
+		1 => 0,
+		3 => 0,
+	);
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['type'] = 'select';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['vocabulary'] = 'taxonomy_news_category';
+	$handler->display->display_options['filters']['field_newsarticle_category_ref_tid']['error_message'] = FALSE;
 
 	/* Display: Page */
 	$handler = $view->new_display('page', 'Page', 'page');
