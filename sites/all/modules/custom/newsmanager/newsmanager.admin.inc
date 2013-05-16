@@ -3,6 +3,7 @@
 /**
  * @file
  * Administration settings for Newsmanager Module
+ * @author indelicato sven
  */
 
 /**

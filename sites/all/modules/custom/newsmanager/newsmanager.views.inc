@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @file
+ * This file provides the views for the Newsmanager Module.
+ * @author indelicato sven
+ */
+
+/**
  * Implements hook_views_api().
  */
 function newsmanager_views_api() {
