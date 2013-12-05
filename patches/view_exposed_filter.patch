@@ -1,0 +1,13 @@
+diff --git a/sites/all/modules/views/handlers/views_handler_filter.inc b/sites/all/modules/views/handlers/views_handler_filter.inc
+index f5db70f..33066d9 100644
+--- a/sites/all/modules/views/handlers/views_handler_filter.inc
++++ b/sites/all/modules/views/handlers/views_handler_filter.inc
+@@ -608,7 +608,7 @@ class views_handler_filter extends views_handler {
+           // Check if the title is defined but value wasn't defined.
+           if (!empty($group['title'])) {
+             if ((!is_array($group['value']) && trim($group['value']) == "") ||
+-                (is_array($group['value']) && count(array_filter($group['value'], '_views_array_filter_zero')) == 0)) {
++                (is_array($group['value']) && count(array_filter($group['value'], '_views_array_filter_zero')) == 0) && !in_array($group['operator'], $this->operator_values(0))) {
+               form_error($form['group_info']['group_items'][$id]['value'],
+                          t('The value is required if title for this item is defined.'));
+             }
