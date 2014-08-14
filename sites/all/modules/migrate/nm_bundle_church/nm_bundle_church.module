@@ -1,0 +1,66 @@
+<?php
+
+function nm_bundle_church_migrate_api() {
+  $api = array(
+    'api' => 2,
+    'migrations' => array(
+      'ChurchImport' => array('class_name' => 'nm_bundle_churchMigration'),
+    ),
+  );
+
+  return $api;
+}
+
+class nm_bundle_churchMigration extends Migration {
+  public function __construct() {
+    parent::__construct();
+
+    $this->description = t('Migrate Churches from Inserate-Server');
+
+    // external database info
+    Database::addConnectionInfo('for_migration_church', 'default', array(
+      'driver' => 'mysql',
+      'database' => 'church',
+      'username' => 'root',
+      'password' => 'r3dmous3INS',
+      'host' => '213.221.254.50',
+      'prefix' => '',
+    ));
+
+    // query construct
+    $query = Database::getConnection('default', 'for_migration_church')->select('churches', 'c')->fields('c');
+
+    // do migrate
+    $this->source = new MigrateSourceSQL($query, array(), NULL, array('cache_counts' => 1));
+    $node_options = MigrateDestinationNode::options('de', 'plain_text');
+    $this->destination = new MigrateDestinationNode('kirchen', $node_options);
+    $this->machinename = 'kirchen';
+    $this->map = new MigrateSQLMap($this->machinename,
+      array(
+        'ID' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        )
+      ),
+      MigrateDestinationNode::getKeySchema(),
+      'for_migration_church'
+    );
+
+    // add the field mapping
+    $this->addFieldMapping('title', 'ORTSCHAFT');
+    $this->addFieldMapping('field_church_plz', 'PLZ');
+    $this->addFieldMapping('field_church_gemeinde', 'KIRCHGEMEINDE')->arguments(array('language' => 'und'));
+    $this->addFieldMapping('field_church_kanton', 'KANTON')->arguments(array('language' => 'und'));
+  }
+
+  /*public function prepareRow($row) {}*/
+
+  function prepare($node, $row) {
+    $node->uid = 1;
+    $node->language = 'de';
+    $node->comment = 0;
+  }
+
+  /*function postImport() {}*/
+}

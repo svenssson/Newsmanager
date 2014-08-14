@@ -1,0 +1,6 @@
+name = "Church Import"
+description = "Imports Churches from Database"
+package = "Imports"
+core = 7.x
+
+dependencies[] = migrate
